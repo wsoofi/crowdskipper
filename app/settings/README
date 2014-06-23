@@ -1,0 +1,8 @@
+Configurations for Flask app live in this folder. For example, development.cfg would contain:
+
+DEBUG = True
+DATABASE_HOST = "localhost"
+DATABASE_PORT = 3306
+DATABASE_USER = "my_user"
+DATABASE_PASSWORD = "my_password"
+DATABASE_DB = "my_database"
