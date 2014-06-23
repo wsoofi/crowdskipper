@@ -1,0 +1,517 @@
+{% extends "layout/base.html" %}
+
+
+
+
+
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    
+    <title>CrowdSkippr - minimize crowds, maximize joy.</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <link rel="icon shortcut" href="static/img/favicon.ico" type="image/x-icon"> 
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-44369290-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+
+    <style>
+      body {
+        padding: 0px;
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        padding-bottom: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+/*        margin: 0 auto;
+        float:none;*/
+
+        background: url("/static/img/stitched_faded.png") repeat center center fixed;
+                -webkit-background-size: cover;
+               -moz-background-size: cover;
+               -o-background-size: cover;
+               background-size: cover;
+      }*/
+
+    
+.text-center {
+    text-align: center !important;
+}
+
+
+    </style>
+  </head>
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+
+          <div class="nav-collapse collapse">
+            <a class="brand" href="/index">Hype Control</a>
+            <ul class="nav">
+              <li class="nav"><a href="/index">Home</a></li>
+              <li><a href="/slides">Slides</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+       
+    <div class="container"
+    
+
+<br>
+
+<div class="row">
+	<div class="span8 offset2">
+  		<div class="well">
+
+			<center><h1>Where are you headed?</h1>
+
+			<br><br>
+
+			<div class="form-inline">
+			  <label class="col-md-3 control-label h3">Select place:</label>
+              <div class="col-md-3">
+                <select id="locationSelector" class="form-control">
+                  <option value="Yosemite_National_Park">Yosemite National Park</option>
+                  <option value="Great_Smoky_Mountains">Great Smoky Mountains</option>
+                  <option value="Grand_Canyon">Grand Canyon</option>
+                  <option value="Yellowstone">Yellowstone</option>
+                  <option value="Rocky_Mountains">Rocky Mountains</option>
+                </select>
+              </div>
+        </div>
+				<form class="form-search" action="article" method="GET">
+					<input class="span6" id="appendedInputButton" type="text" name="request_url" placeholder="News article URL">
+					<button class="btn btn-inverse" type="submit">Go!</button>
+				</form>
+			</div>
+			<!-- <hr> -->
+			</center>
+		</div>
+		
+
+		<div class="well">
+			<h3>Examples</h3>
+			<h5>We can accurately classify news articles from opinion articles.</h5>
+			<table class="table well">
+				<thead>
+					<tr> <td>Article Type</td> <td><div class="text-center">Hype score</div></td> <td>Headline</td> </tr>
+				</thead>
+					<tr>
+						<td>Opinion</td>
+						<td><div class = 'text-center'>97</div></td>
+						<td><a href="/article?request_url=http://beforeitsnews.com/alternative/2011/05/hidden-obamacare-secret-rfid-chip-implants-mandatory-for-all-by-march-23-2013-665502.html"> 	Hidden Obamacare Secret: “RFID Chip Implants” Mandatory for All by March 23, 2013</a></td>
+						<td></td>	
+					</tr>
+
+
+				<tbody>
+					<tr>
+						<td>Opinion</td>
+						<td><div class="text-center">99</div></td>
+						<td><a href="/article?request_url=http://www.nytimes.com/2013/09/11/opinion/friedman-threaten-to-threaten.html?_r=0">
+							 	Threaten to Threaten</a></td>
+						<td></td>	
+					</tr>
+					<tr>
+						<td>News</td>
+						<td><div class = 'text-center'>4</div></td>
+						<td><a href="/article?request_url=http://www.nytimes.com/2013/09/17/world/europe/us-and-allies-tell-syria-to-dismantle-chemical-arms-quickly.html?ref=world"> 	U.S. and Allies Push for Strong U.N. Measure on Syria’s Arms</a></td>
+						<td></td>	
+					</tr>
+
+					</tr>
+				</tbody>
+			</table>
+
+			<!-- <h5>... but not always.  Occassionally, there are VERY hyped articles.</h5>
+			<table class="table table-condensed well">
+				<thead>
+					<tr><td>Hype<br>score</td> <td>Headline</td> <td>Source</td> </tr>
+				</thead>
+				<tbody>
+					
+				</tbody>
+			</table> -->
+
+			<!-- <h5>Everyone adds some extra hype in their some of their articles.</h5>
+			<table class="table table-condensed well">
+				<thead>
+					<tr><td>Hype<br>score</td> <td>Headline</td> <td>Source</td> </tr>
+				</thead>
+				<tbody>
+					
+				</tbody>
+			</table>	 -->		
+
+		</div>
+	</div>
+</div>
+
+
+
+
+<!-- <h4>Today's Top Stories</h4>
+
+<table border="0" cellpadding="5">
+<tr>
+<th></th>
+<th align="left">Headline</th>
+<th align="right">Hype Score</th>
+</tr>
+
+</table>  -->
+
+
+  </div>
+  </body>
+</html>
+
+
+
+
+
+
+
+<!--
+<html>
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+-->
+<!--
+<script>
+var fetchMonth = function() {
+	function success(responseData) {
+		console.log(responseData);
+		$('#outputMonth').text(responseData);
+	};	
+	$.get('/api/users/' + $('#monthInput').val(), success);
+};
+</script>
+
+<script>
+var fetchDay = function() {
+	function success(responseData) {
+		console.log(responseData);
+		$('#outputDay').text(responseData);
+	};	
+	$.get('/api/users/' + $('#dayInput').val(), success);
+};
+</script>
+</head>
+<body>
+
+
+-->
+
+{% block head %}
+<link href="{{ url_for('static', filename='css/datepicker.css') }}" rel="stylesheet"> <!--css for datepicker -->
+<style>
+.container {
+  /* Overrides bootstrap's default width */
+  width: 600px;
+}
+
+#loader {
+  display: none;
+}
+
+body {
+  background-image: url("https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg");
+  background-size: cover;
+}
+
+img .flickr-image {
+  display: inline-block;
+  opacity: 0;
+}
+
+#currentOutput {
+  font-size: xx-large;
+  color: red;
+  box-shadow: 2px 1px 1px #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  background: #ddd;
+}
+</style>
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+<div id="wrap">
+    <div class="container">
+    
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="col-md-3 control-label h3">Select place:</label>
+            <div class="col-md-3">
+                <select id="locationSelector" class="form-control">
+                    <option value="Yosemite_National_Park">Yosemite National Park</option>
+                    <option value="Great_Smoky_Mountains">Great Smoky Mountains</option>
+                    <option value="Grand_Canyon">Grand Canyon</option>
+                    <option value="Yellowstone">Yellowstone</option>
+                    <option value="Rocky_Mountains">Rocky Mountains</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label h4">I want to visit between:</label>
+            <div class="col-md-2">
+                <input id="BeginDatePicker" class="form-control"></input>
+            </div>
+            <div class="col-md-1">and</div>
+            <div class="col-md-2">
+                <input id="EndDatePicker" class="form-control"></input>
+            </div>            
+        </div>
+        <div class="form-group">
+          <label>
+            <input id="HolidaysWeekendsOnly" type="checkbox" name="checkbox" value="Yes">Weekends/Federal Holidays Only</input>
+          </label>
+        </div>
+         
+        
+        <div class="form-group">
+          <div class="col-md-offset-3 col-md-6">    
+            <button onclick="fetchData();" type="button" class="btn btn-primary">Predict Crowd Size!</button>  <!-- classes are like tags - have several attributes (like color in the case of btn) that can be set to different values -->
+          </div>
+        </div>
+    </form>
+    
+
+            <div id="currentOutput">
+            Enter the Year, Month, and Day that you want to take a hike!
+            </div>
+            
+    <div id="loader">
+        <img src="{{ url_for('static', filename='images/loader.gif') }}"></img>
+    </div>
+    <div id="results">
+        <div id="chart_div"></div>
+        <!--<img src="https://farm8.staticflickr.com/7049/6792541178_0d14af574d.jpg" alt="some_text">-->
+        <img id="first-img" class="first flickr-image"></img>
+        <img id="second-img" class="second flickr-image"></img>
+    </div>
+    
+    </div>
+    
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>  <!-- source for visualization (google visualization library) -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-datepicker.js') }}"></script>
+<script>
+
+var dp = $('#BeginDatePicker').datepicker({  // function --> object --> property1 = string, and property2 = function
+    format: 'yyyy-mm-dd',
+    onRender: function(date) {
+        return date.valueOf() < Date.now() ? 'disabled' : '';  //sets 'disabled' class (i.e.. html attribute) 
+    }
+}).on('changeDate', function() {  //datepicker is a function. It takes one object as a parameter which is contained in 
+                                  //curly braces. That object has several properties including format and onRender. See source for
+                                  // other formats.  onRender is a function. date is an input parameter for the function. This function is called for each date.
+    dp.hide();           //on is a jQuery function.  What On does is: if you see an event called "changeDate", then call the following function ()
+}).data('datepicker');   //if date is changed, then hide dp.  
+
+var dp = $('#EndDatePicker').datepicker({  // function --> object --> property1 = string, and property2 = function
+    format: 'yyyy-mm-dd',
+    onRender: function(date) {
+        return date.valueOf() < Date.now() ? 'disabled' : '';  //sets 'disabled' class (i.e.. html attribute) 
+    }
+}).on('changeDate', function() {  //datepicker is a function. It takes one object as a parameter which is contained in 
+                                  //curly braces. That object has several properties including format and onRender. See source for
+                                  // other formats.  onRender is a function. date is an input parameter for the function. This function is called for each date.
+    dp.hide();           //on is a jQuery function.  What On does is: if you see an event called "changeDate", then call the following function ()
+}).data('datepicker');   //if date is changed, then hide dp.  
+
+//NOTE NOTE:  function append(output)  is the same thing as append = function(output) 
+
+$('#first-img').on('load', function() {
+  console.log('first img loaded');
+  $('#first-img').animate({
+    opacity: 1,
+    duration: 2000
+  });
+});
+
+$('#second-img').on('load', function() {
+  console.log('second img loaded');
+  $('#second-img').animate({opacity: 1, duration: 2000});
+});
+
+
+var showImages = function(urls) {
+  if (urls.length < 2) {
+    console.log('not enough urls');
+    return;
+  }
+  $('#first-img').attr('src', urls[0]);
+  $('#second-img').attr('src', urls[1]);
+};
+
+var fetchData = function() {
+    // Show loader
+    $('#loader').css('display', 'block');
+    $('#results').css('display', 'none');
+
+    // Hide images
+    $('.flickr-image').css('opacity', 0);
+
+	var success = function(responseData, statusCode) {
+	    console.log(responseData);
+	    //var myplot = JSON.parse(responseData);
+	    var mydata = JSON.parse(responseData);
+	    //var myplot = mydata.slice(0,mydata.length-1);
+        //var mybestdate = mydata[mydata.length-1];
+        var myplot = mydata['visData'];
+        var mybestdate = mydata['bestDate'];
+        var myphotourls = mydata['photoURLs'];
+        console.log('this is mydata');
+
+        console.log(mydata);
+        console.log('this is myplot');
+
+	    console.log(myplot);
+        console.log('this is mybestdate');
+
+	    console.log(mybestdate);
+
+		mypredictedoutput = responseData;
+		//$('#currentOutput').text(responseData);//
+		
+
+        // Show loader
+        $('#loader').css('display', 'none');
+        $('#results').css('display', '');
+    
+		drawChart(myplot);
+		sendOutputToUser(mybestdate);
+		
+		showImages(myphotourls);
+
+	};
+	var isChecked = $('#HolidaysWeekendsOnly').prop('checked')?true:false;
+	console.log('is it checked?: ' +isChecked);
+    //var url = '/api/date_range/' + $('#BeginDatePicker').val() + '/' + $('#EndDatePicker').val(); // can also call #myAwesomestDatePicker just like the others.
+	//var url = '/api/date_range/' + $('#BeginDatePicker').val() + '/' + $('#EndDatePicker').val() + '/' + isChecked;
+	  var url = '/api/date_range/' + $('#locationSelector').val()+ '/' + $('#BeginDatePicker').val() + '/' + $('#EndDatePicker').val() + '/' + isChecked;
+
+    console.log('url: ' + url);
+	console.log('this is the console log');
+	$.get(url, success); //gets "output"or "predictedcrowds" (which was returned) from users (under above url) in views.py.  Hangs onto this until success is called. This function AUTOMATICALLY knows that the first parameter passed to success function must be assigned the data.  The get function also passes other things like status code (which is always the second parameter passed and debug code (always the third parameter passed.)
+
+};
+
+// Load the Visualization API and the piechart package.
+google.load('visualization', '1.0', {'packages':['corechart']}); // 
+
+// Callback that creates and populates a data table,
+// instantiates the pie chart, passes in the data and
+// draws it.
+
+function sendOutputToUser(output) {
+		$('#currentOutput').text("Based on your preferences, you should head out on " + output + ".");//
+}
+
+function drawChart(arrayData) { //javascript
+
+    // Create the data table.
+    //arr = [['Date', 'Percent']];
+    //for (var i=0; i<100; i++) {
+    //  //arr.push(myplot(i));
+    //  arr.push([i + '', Math.random()]);
+    //}
+    //console.log(arrayData);
+    //console.log(arr);
+    var data = google.visualization.arrayToDataTable(arrayData);
+    
+    // Set chart options
+    var options = {'title':"Random values placeholder chart", //options object takes lots of things, incliuding colors, so it is an easy way of customizing visualization - go look at docs.
+                   'curveType': 'function',
+                   'width':800,
+                   'height':400};
+    
+    // Instantiate and draw our chart, passing in some options.
+    var chart = new google.visualization.LineChart(document.getElementById('chart_div')); //raw javascript NOT jQuery
+    chart.draw(data, options);
+}
+
+</script>
+
+{% endblock %}
+
+<!--
+
+</body>
+
+</html>
+
+
+<html>
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+var fetchData = function() {
+
+	function success(responseData) {
+		console.log(responseData);
+		$('#myDiv').text(responseData);
+
+		
+	};
+	var url = '/api/users/' + $('#dayInput').val();
+	$.get(url, success);
+};
+</script>
+</head>
+
+<body>
+Which Day? 
+<input id="dayInput" type="text"></input>
+<button onclick="fetchData();">Search This</button>
+<div id="myDiv"></div>
+
+
+
+</body>
+
+</html> -->
+

@@ -43,3 +43,69 @@ body {
     margin: 10px;
 }
 
+/* Wafa's styles
+---------------------------------------------------- */
+
+.container {
+  /* Overrides bootstrap's default width
+  width: 600px;*/
+}
+
+#results {
+  display: none;
+}
+
+#loader img {
+  width: 50px;
+}
+
+body {
+  background-image: url("../images/background3.jpg");
+  background-size: cover;
+}
+
+img .flickr-image {
+  display: inline-block;
+  opacity: 0;
+}
+
+.title {
+  font-family: 'Arvo', sans-serif;
+  font-size: 100px;
+}
+
+#currentOutput {
+  display: flex;
+  color: black;
+  justify-content: center;
+  font-size: x-large;
+}
+
+.panel {
+  /*box-shadow: 2px 1px 1px #ddd;*/
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid rgb(153, 153, 153);
+  background: #f9f9f9;
+}
+
+.image-container {
+  margin: 10px;
+  padding: 10px;
+  width: 300px;
+  border: 1px solid black;
+  background: #f9f9f9;
+  border-radius: 3px;
+  min-height: 400px;
+  
+  /* Center pictures inside the container */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flickr-image {
+  max-height: 400px;
+  max-width: 280px; 
+}

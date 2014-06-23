@@ -1,0 +1,102 @@
+
+<html>
+    <head>
+    </head>
+    <body>
+    {%for a in arr %}
+    a
+    {%endfor %}
+    </body>
+</html>
+<!--
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script>
+
+var fetchData = function() {
+	function success(responseYear, responseMonth, responseDay) {
+		console.log(responseYear, responseMonth, responseDay);
+		$('#outputYear').text(responseYear);
+		$('#outputMonth').text(responseMonth);
+		$('#outputDay').text(responseDay);
+
+	};	
+	$.get('/api/users/' + $('#yearInput').val() + $('#monthInput').val() + $('#dayInput').val(), success);
+	
+};
+</script>HERE
+
+<script>
+var fetchMonth = function() {
+	function success(responseData) {
+		console.log(responseData);
+		$('#outputMonth').text(responseData);
+	};	
+	$.get('/api/users/' + $('#monthInput').val(), success);
+};
+</script>
+
+<script>
+var fetchDay = function() {
+	function success(responseData) {
+		console.log(responseData);
+		$('#outputDay').text(responseData);
+	};	
+	$.get('/api/users/' + $('#dayInput').val(), success);
+};
+</script>
+-->
+<!--
+</head>
+
+
+<body>
+
+<input id="yearInput" type="text"></input>
+<button onclick="fetchYear();">Search This</button>
+<div id="outputYear"></div>
+
+<input id="monthInput" type="text"></input>
+<button onclick="fetchMonth();">Search This</button>
+<div id="outputMonth"></div>
+
+<input id="dayInput" type="text"></input>
+<button onclick="fetchDay();">Search This</button>
+<div id="outputDay"></div>
+
+
+
+</body>
+
+
+
+<!--
+<html>
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+var fetchData = function() {
+et 
+	function success(responseData) {
+		console.log(responseData);
+		$('#output').text(responseData);
+
+		
+	};	
+	$.get('/api/users/' + $('#dayInput').val(), success);
+};
+</script>
+</head>
+
+<body>
+Which Day? 
+<input id="dayInput" type="text"></input>
+<button onclick="fetchData();">Search This</button>
+<div id="output"></div>
+
+
+
+</body>
+
+</html> HERE-->

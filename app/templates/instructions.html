@@ -1,0 +1,31 @@
+{% extends "layout/base.html" %}
+
+
+{% block head %}
+<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+<style>
+  #submit-button{
+    font-size: 25px;
+    border-radius: 25px;
+  }
+</style>
+{% endblock %}
+
+
+
+{% block content %}
+<div id="wrap">
+    <div class="container">
+    
+    <h1 class="text-center title">CrowdSkippr</h1>
+    <center>
+          <h2 ><small><font color = "black">Choose a national park <br> and a range of possible dates for your visit.<br> We'll tell you the best day for avoiding big crowds.<br><br></font></small></h2>
+
+        <a href="/user_submit" id="submit-button" class="btn btn-primary">Take a hike.</a>
+     </h2>  
+    </center>
+    
+    </div>
+    
+</div>
+{% endblock %}
