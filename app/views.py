@@ -25,11 +25,11 @@ conn = con_db(host, port, user, passwd, db)
 
 # ROUTING/VIEW FUNCTIONS
 
-MyGBR_Yosemite_Percentage    = pickle.load( open( "./app/helpers/GradientBoostingRegressor_Yosemite_Percentages_pickle2.p", "rb" ) )
-MyGBR_SmokyMtn_Percentage    = pickle.load( open( "./app/helpers/GradientBoostingRegressor_SmokyMtn_Percentages_pickle2.p", "rb" ) )
-MyGBR_GrandCanyon_Percentage = pickle.load( open( "./app/helpers/GradientBoostingRegressor_GrandCanyon_Percentages_pickle2.p","rb") )
-MyGBR_Yellowstone_Percentage    = pickle.load( open( "./app/helpers/GradientBoostingRegressor_Yellowstone_Percentages_pickle2.p","rb") )
-MyGBR_RockyMountains_Percentage = pickle.load( open( "./app/helpers/GradientBoostingRegressor_RockyMountain_Percentages_pickle2.p","rb") )
+MyGBR_Yosemite_Percentage    = pickle.load( open( "./app/helpers/GradientBoostingRegressor_Yosemite_Percentages_pickle3.p", "rb" ) )
+MyGBR_SmokyMtn_Percentage    = pickle.load( open( "./app/helpers/GradientBoostingRegressor_SmokyMtn_Percentages_pickle3.p", "rb" ) )
+MyGBR_GrandCanyon_Percentage = pickle.load( open( "./app/helpers/GradientBoostingRegressor_GrandCanyon_Percentages_pickle3.p","rb") )
+MyGBR_Yellowstone_Percentage    = pickle.load( open( "./app/helpers/GradientBoostingRegressor_Yellowstone_Percentages_pickle3.p","rb") )
+MyGBR_RockyMountains_Percentage = pickle.load( open( "./app/helpers/GradientBoostingRegressor_RockyMtns_Percentages_pickle3.p","rb") )
 
 
 @app.route('/')
@@ -133,7 +133,7 @@ def dateRange(location,min_date, max_date,holweekendonly):
 
 
     cur.close()
-
+    #conn.close()
 
     print chosen_months, daysofweek,predicted_temps, daysofyear, weekendflags
     #dates = zip(chosen_years, chosen_months, chosen_days)
@@ -142,7 +142,9 @@ def dateRange(location,min_date, max_date,holweekendonly):
     for date in range(0,len(chosen_years)):
       strdate.append(str(chosen_years[date]) + '-' + str(chosen_months[date]).zfill(2)+'-'+ str(chosen_days[date]).zfill(2))
 
-    predictors = zip(chosen_months, daysofweek,predicted_temps, daysofyear,weekendflags) #NEWPICKLE
+    #predictors = zip(chosen_months, daysofweek, daysofyear,predicted_temps,weekendflags) #NEWPICKLE
+    predictors = zip(daysofweek, daysofyear,predicted_temps,weekendflags) #NEWPICKLE
+
 
     print predictors
     
@@ -169,7 +171,7 @@ def dateRange(location,min_date, max_date,holweekendonly):
     if holweekendonly == 'true':
       for idx in range(0, len(predictors)):  #now find recommended dates
 #        if date_predictors_crowds[idx][1][2]==1:
-        if date_predictors_crowds[idx][1][4]==1:
+        if date_predictors_crowds[idx][1][3]==1:
 
           candidates.append(date_predictors_crowds[idx])
     else:
