@@ -1,4 +1,3 @@
-# imports
 from flask import Flask
 
 # Creates our application.
@@ -6,7 +5,7 @@ app = Flask(__name__)
 
 # Development configuration settings
 # WARNING - these should not be used in production
-app.config.from_pyfile('settings/development.cfg')
+app.config.from_pyfile('settings/production.cfg')
 
 # Production configuration settings
 # To have these override your development settings,
@@ -25,6 +24,5 @@ port = app.config["DATABASE_PORT"]
 user = app.config["DATABASE_USER"]
 passwd = app.config["DATABASE_PASSWORD"]
 db = app.config["DATABASE_DB"]
-
 
 from app import views

@@ -1,6 +1,7 @@
 from flask import render_template, request
 from app import app, host, port, user, passwd, db
-from app.helpers.database import con_db
+from helpers.database import con_db
+import pymysql
 import cPickle as pickle
 
 import datetime
@@ -21,7 +22,6 @@ import json
 # To create a database connection, add the following
 # within your view functions:
 flickr_response_re = r'jsonFlickrApi\((.*)\)'
-conn = con_db(host, port, user, passwd, db)
 
 # ROUTING/VIEW FUNCTIONS
 
@@ -46,6 +46,11 @@ def UserSubmit():
 @app.route('/api/date_range/<location>/<min_date>/<max_date>/<holweekendonly>')
 
 def dateRange(location,min_date, max_date,holweekendonly):
+    try:
+      conn = pymysql.connect(host=host, port=port, user=user, passwd=passwd, db=db)
+    except pymsyql.Error, e:
+      return ('Could not connect to database: %s' % e), 500
+
     print location, min_date, max_date,holweekendonly
     
     minyear = int(min_date[0:4])
@@ -98,6 +103,7 @@ def dateRange(location,min_date, max_date,holweekendonly):
         cur.execute(
             'SELECT * FROM all_temperature_averages WHERE park_id = {0} AND date = {1}'.
             format(location_escaped, d_str))
+        print 'Query successfully executed'
         cur_res = cur.fetchone()
         res.append(cur_res)
 
@@ -133,7 +139,8 @@ def dateRange(location,min_date, max_date,holweekendonly):
 
 
     cur.close()
-    #conn.close()
+    conn.close()
+
 
     print chosen_months, daysofweek,predicted_temps, daysofyear, weekendflags
     #dates = zip(chosen_years, chosen_months, chosen_days)
