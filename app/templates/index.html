@@ -211,6 +211,7 @@ var fetchData = function() {
     console.log('url: ' + url);
 	console.log('this is the console log');
 	$.get(url, success); //gets "output"or "predictedcrowds" (which was returned) from users (under above url) in views.py.  Hangs onto this until success is called. This function AUTOMATICALLY knows that the first parameter passed to success function must be assigned the data.  The get function also passes other things like status code (which is always the second parameter passed and debug code (always the third parameter passed.)
+    console.log('successful query.');
 
 };
 
@@ -286,4 +287,3 @@ function drawChart(arrayData) { //javascript
 
 {% endblock %}
 
-he

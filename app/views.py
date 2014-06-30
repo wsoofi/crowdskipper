@@ -44,9 +44,10 @@ def UserSubmit():
 
 
 @app.route('/api/date_range/<location>/<min_date>/<max_date>/<holweekendonly>')
-
 def dateRange(location,min_date, max_date,holweekendonly):
+    print 'In dateRange'
     try:
+      print host, port, user, db
       conn = pymysql.connect(host=host, port=port, user=user, passwd=passwd, db=db)
     except pymsyql.Error, e:
       return ('Could not connect to database: %s' % e), 500
