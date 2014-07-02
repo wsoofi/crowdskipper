@@ -55,13 +55,13 @@ Reveal.initialize({
     previewLinks: false,
 
     // Transition style
-    transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+    transition: 'none', // default/cube/page/concave/zoom/linear/fade/none
 
     // Transition speed
     transitionSpeed: 'default', // default/fast/slow
 
     // Transition style for full page slide backgrounds
-    backgroundTransition: 'default', // default/none/slide/concave/convex/zoom
+    backgroundTransition: 'none', // default/none/slide/concave/convex/zoom
 
     // Number of slides away from the current that are visible
     viewDistance: 3,
